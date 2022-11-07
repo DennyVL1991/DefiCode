@@ -1,4 +1,5 @@
 ﻿using ConsoleApp;
+using System;
 
 //Code Golf - Calculatrice par chaîne de caractères
 Console.WriteLine("Entrez la chaîne de caractères");
@@ -9,6 +10,9 @@ double result = 0;
 
 try
 {
+    if (text == "")
+        throw new Exception("Chaîne Vide");
+
     //valider que la chaîne ne se termine pas par un signe
     string signs = "+-*/(sqrt^";
     if (signs.Contains(text[^1].ToString())) 
