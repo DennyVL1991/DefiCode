@@ -1,0 +1,6 @@
+/ConsoleApp/bin
+/ConsoleApp/obj
+/TestProject/bin
+/TestProject/obj
+/TestResults
+/.vs
