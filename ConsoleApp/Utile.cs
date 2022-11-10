@@ -65,7 +65,7 @@ namespace ConsoleApp
                 str.Clear();
             }
 
-            //vérifier que les parenthèses sont paires
+            //vérifier que les parenthèses sont paires et sont dans l´order correct
             int ind = list.FindIndex(x => x.Contains('(') || x.Contains(')'));
             if (ind != -1 && !ValidateParenthesesOrder(list))
                 throw new Exception("Chaîne Invalide");

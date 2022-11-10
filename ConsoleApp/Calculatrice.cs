@@ -88,8 +88,12 @@ namespace ConsoleApp
 
         List<string> ParenthesisOperations(List<string> list, int indexOpen)
         {
-            int indexClose = list.FindIndex(x => x.Contains(')'));
+            int indexClose = MatchingParentheses(list,indexOpen);
             int count = indexClose - indexOpen;
+            if (count==1)
+            {
+                throw new Exception("Chaîne Invalide");
+            }
             List<string> sublist = list.GetRange(indexOpen + 1, count - 1); //hors parenthèses
             double answer = Calculate(sublist);
             list = UpdateList(list, answer, indexOpen + 1, count);
@@ -102,6 +106,26 @@ namespace ConsoleApp
             list.RemoveRange(i, count);
             list[i - 1] = value.ToString();
             return list;
+        }
+
+        static int MatchingParentheses(List<string> list, int indexOpen)
+        {
+            int cont =0, res = 0;
+            bool found = false;
+
+            for (int i = indexOpen+1; !found ; i++)
+            {
+                if (list[i] == ")" && cont == 0)
+                {
+                    found = true;
+                    res = i;
+                }
+                else if (list[i] == "(")
+                    cont++;
+                else if (list[i] == ")")
+                    cont--;
+            }
+            return res;
         }
     }
 }
