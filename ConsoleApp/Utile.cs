@@ -36,7 +36,7 @@ namespace ConsoleApp
                     }
 
                     //sqrt
-                    if ("sqrt".Contains(item))
+                    if ("sqrt".Contains(item) && text.Contains("sqrt"))
                     {
                         isSqrt = true;
                         str.Append(item);
@@ -44,6 +44,10 @@ namespace ConsoleApp
                         if ("t".Contains(item))
                             isSqrt = false;
                     }
+
+                    //non lettres
+                    else if (Regex.IsMatch(item.ToString(), @"^[a-zA-Z]+$"))
+                        throw new Exception("Chaîne Invalide");
 
                     //ajouter le signe si le caractère précédent est un nombre ou une parenthèse
                     else if (item == '(' || item == ')' ||
@@ -53,7 +57,7 @@ namespace ConsoleApp
                     else if (item == '-') //nombre négatif
                         str.Append('-');
 
-                    else //deux ou plusieurs signes consécutifs
+                    else //deux ou plusieurs signes consécutifs 
                         throw new Exception("Chaîne Invalide");
                 }
             }
